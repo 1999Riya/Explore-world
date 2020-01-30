@@ -1,0 +1,47 @@
+!DOCTYPE html>
+<html>
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<title>api heMealDb</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function()
+{
+$.ajax({
+  method: "GET",
+  crossDomain: true,
+  url: "https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood",
+  dataType: "json",
+  async: true,
+  success: function(data) {
+  $("#div").html("");
+  content="<table class='table table-hover table-striped table-condensed' style='width:50%'>";
+  for(a in data.meals)
+  {
+  content+="<tr><td>"+data.meals[a].strMeal+"</td><td> "+data.meals[a].strMealThumb+"</td><td>"+data.meals[a].idMeal+"</td></tr>";
+  }
+  content+="</table>";
+  $("#div").append(content);
+  },
+ 
+  error: function() {
+    infoContent = "<div>Sorry, data is not coming through. Refresh and try again.</div>";
+  }
+});
+});
+
+</script>
+</head>
+ <body>
+ 
+<h2>DELICIOUS MEALS</h2>
+
+
+<hr/>
+<div id="div">
+</div>
+</body>
+</html>

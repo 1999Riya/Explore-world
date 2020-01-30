@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Explore World</title>
+
+    <link rel="icon" href="img/core-img/logo2.png">
+
+    <link rel="stylesheet" href="style.css">
+ 
+<style>
+ 
+div#con {
+background-color: white;
+float: right;
+width:400px;
+font-family:cursive;
+opacity:1;
+}
+ #palatinNav {
+  height: 30px;
+}
+
+
+ .items
+{
+	width: 30%; 
+	display: block; 
+	padding: 4px; 
+	margin-bottom: 20px; 
+	line-height: 1.42857143; 
+	background-color: #fff;
+	border: 1px solid #ddd; 
+	border-radius: 4px; 
+	float: left; 
+	margin-left: 1%;
+}
+.button
+{
+	color: #fff; 
+	background-color: #c9302c; 
+	border-color: #ac2925; 
+	box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125); 
+	padding: 10px 16px; 
+	font-size: 18px; 
+	border-radius: 6px;
+}
+.button5
+{
+	color: #fff; 
+	background-color: #c9302c; 
+	border-color: #ac2925; 
+	box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125); 
+	padding: 10px 16px; 
+	font-size: 18px; 
+	border-radius: 6px;
+}
+
+.button8{
+	color: #fff; 
+	background-color: #c9302c; 
+	border-color: #ac2925; 
+	box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125); 
+	padding: 10px 16px; 
+	font-size: 18px; 
+	border-radius: 6px;
+}
+.button1{
+	color: #fff; 
+	background-color: #c9302c; 
+	border-color: #ac2925; 
+	box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125); 
+	padding: 10px 1px; 
+	font-size: 18px; 
+	border-radius: 6px;
+}
+.caption
+{
+	color: #000; 
+	padding: 10px 10px 10px; 
+	font-weight: bold; 
+	text-align: center;
+}
+
+.about-us-area .container
+{
+margin: auto;
+height:auto;
+overflow: hidden;
+}
+</style>
+</head>
+<body>
+
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="cssload-container">
+            <div class="cssload-loading"><i></i><i></i><i></i><i></i></div>
+        </div>
+    </div>
+
+    <header class="header-area">
+        
+        <div class="palatin-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container" style="height:30px;">
+                   
+                    <nav class="classy-navbar justify-content-between" id="palatinNav">
+                        <a href="index.html" class="nav-brand"><img src="images/output-onlinepngtools2.png" alt="" height="120px" width="200px"></a>
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+                        <div class="classy-menu">
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li class="active"><a href="about-us.html">About Us</a></li>
+                                     <li><a href="#">Services</a>
+                                      <ul class="dropdown">
+                                            <li><a href="news.html">News</a></li>
+                                            <li><a href="weather.html">Weather</a></li>
+                                            <li><a href="food.html">Food & Drinks</a></li>
+                                        </ul>
+                                     
+                                     
+                                     </li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+
+                            </div>
+                            
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="breadcumb-area bg-img d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/cover.jpg);">
+        <div class="bradcumbContent">
+            <center><h2>Food & Drinks<br/>This site will provide you current trending delicous food and drinks.<br/>By clicking on the categories below feel yummy ! </h2></center>
+        </div>
+    </section>
+
+  <section class="about-us-area">
+  <div class="container" style="padding-top: 80px; height:1500px; width:1500px;">
+
+    <div class="container">
+        <div class="items">
+            <img src="img\bg-img\food1.jpg" class="thumbnail" style="width:300px; height:200px;">
+            <div class="caption">
+                <button id="b1" class="button" onclick="canadian()">Food</button>
+				<button id="b2" class="button1" onclick="lovely()">click me for more</button>
+<p id="demo"></p>
+				
+				<div class="yes"style="height:100px;
+    width:300px; 
+    background-color: pink;">
+                    <p style="color: black;font-size: 20px">Have chesseylicious,spicy and soucy food you crave for.</p>
+                </div>
+            </div>
+           
+        </div>
+        <div id="canadian" style="background-color:yellow;width:1000px">
+        
+        </div>
+		
+
+    <div class="items">
+            <img src="Images\mocktail.jpg" class="thumbnail" style="width:300px; height:200px;">
+            <div class="caption">
+                <button id="b1" class="button" onclick="mocktail()">Mocktail</button>
+				<button id="b2" class="button5" onclick="tail()">click me for more</button>
+				<p id="demoi"></p>
+               
+            </div>
+            <div style="height: 100px;
+    width:300px; 
+    background-color:pink;"> <p style="color: black;font-size: 20px">Mocktails with taste and style.</p></div>
+        </div>
+
+        <div id="mocktail" style="background-color:yellow;width:1000px">
+        
+        </div>
+        <div class="items">
+            <img src="Images\co.jpg" class="thumbnail"style="width:300px; height:200px;">
+            <div class="caption">
+                <button id="b1" class="button" onclick="cocktail()">Cocktail</button>
+                <button id="b4" class="button8" onclick="mail()">click me for more</button>
+				<p id="demoii"></p>
+            </div>
+          <div style="height:100px;
+    width:300px; text-align:center;
+    background-color: pink;"><p style="color: black;font-size: 20px">Probably the best Cocktails in the world.</p>
+        </div>
+        </div>
+        
+        
+    
+    <div id="cocktail" style="background-color:;float:left;width:1000px">
+	
+	</div>
+</div>
+    <br>
+    <br>
+    <br>
+    
+     <div class="container">
+
+        <div id="search">
+        
+        </div>
+    
+        </div>
+    
+    </section>
+
+    
+
+ 
+  <script src="script.js"></script>
+  
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-12 col-lg-5">
+                    <div class="footer-widget-area mt-50">
+                        <a href="#" class="d-block mb-5"><img src="img/core-img/logo.png" alt=""></a>
+                        <p>Thank You for being with us in the journey of information. Visit Again for more interesting and updated facts. Regards from Explore World. </p>
+                    </div>
+                </div>
+
+                
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="footer-widget-area mt-50">
+                        <h6 class="widget-title mb-5">Find us on the map</h6>
+                        <img src="img/bg-img/footer-map.png" alt="">
+                    </div>
+                </div>
+
+               
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="footer-widget-area mt-50">
+                        <h6 class="widget-title mb-5">Subscribe to our newsletter</h6>
+                        <form action="#" method="post" class="subscribe-form">
+                            <input type="email" name="subscribe-email" id="subscribeemail" placeholder="Your E-mail">
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+
+                
+                <div class="col-12">
+                    <div class="copywrite-text mt-30">
+                        <p><a href="#">
+Copyright &copy; Explore World</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+   
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    
+    <script src="js/bootstrap/popper.min.js"></script>
+   
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+   
+    <script src="js/plugins/plugins.js"></script>
+    
+    <script src="js/active.js"></script>
+</body>
+
+</html>

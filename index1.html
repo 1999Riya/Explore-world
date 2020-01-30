@@ -1,0 +1,626 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
+		
+		<title>Compass Starter by Ariona, Rian</title>
+
+		// Loading third party fonts 
+		<link href="http://fonts.googleapis.com/css?family=Roboto:300,400,700|" rel="stylesheet" type="text/css">
+		<link href="fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+		// Loading main css file
+		<link rel="stylesheet" href="style.css">
+		
+		//[if lt IE 9]>
+		<script src="js/ie-support/html5.js"></script>
+		<script src="js/ie-support/respond.js"></script>
+		<![endif]
+
+	</head>
+
+
+	<body>
+		
+		<div class="site-content">
+			<div class="site-header">
+				<div class="container">
+					<a href="index.html" class="branding">
+						<img src="images/logo.png" alt="" class="logo">
+						<div class="logo-type">
+							<h1 class="site-title">Company name</h1>
+							<small class="site-description">tagline goes here</small>
+						</div>
+					</a>
+
+					// Default snippet for navigation
+					<div class="main-navigation">
+						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+						<ul class="menu">
+							<li class="menu-item current-menu-item"><a href="index.html">Home</a></li>
+							<li class="menu-item"><a href="news.html">News</a></li>
+							<li class="menu-item"><a href="live-cameras.html">Live cameras</a></li>
+							<li class="menu-item"><a href="photos.html">Photos</a></li>
+							<li class="menu-item"><a href="contact.html">Contact</a></li>
+						</ul> // .menu 
+					</div> // .main-navigation 
+
+					<div class="mobile-navigation"></div>
+
+				</div>
+			</div> // .site-header -->
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+
+    <title>Explore World</title>
+
+
+    <link rel="icon" href="img/core-img/logo2.png">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="weather.css">
+
+</head>
+
+<body>
+
+<style>
+    #th{
+        border-collapse:collapse;
+    
+    }
+div#con {
+background-color: white;
+float: right;
+width:400px;
+font-family:cursive;
+opacity:1;
+}
+ #palatinNav {
+  height: 30px;
+}
+#input-border {
+margin-top: 60px;
+width:300px;
+}
+
+#weather-data {
+    background-color:white;
+    width: 200px;
+    font-family:cursive;
+    opacity:1;
+}
+</style>
+    
+    <header class="header-area">
+
+        <div class="palatin-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container" style="height:30px">
+          
+                    <nav class="classy-navbar justify-content-between" id="palatinNav">
+
+                      
+                        <a href="index.html" class="nav-brand"><img src="images/output-onlinepngtools2.png" alt="" height="120px" width="200px"></a>
+
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+
+                        <div class="classy-menu">
+
+       
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+  
+                            <div class="classynav">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="about-us.html">About Us</a></li>
+                                      <li><a href="#">Services</a>
+									  <ul class="dropdown">
+                                           <li><a href="news.html">News</a></li>
+                                            <li><a href="weather.html">Weather</a></li>
+                                            <li><a href="food.html">Food & Drinks</a></li>
+                                        </ul>
+									 </li>
+                                    <li class="active"><a href="contact.html">Contact</a></li>
+                                </ul>
+
+                            </div>
+          
+                        </div>
+                    </nav>
+                
+				
+				</div>
+            </div>
+        </div>
+    </header>
+
+
+    <section class="breadcumb-area bg-img d-flex align-items-center justify-content-center" style="background-image: url(img/bg-img/weather.jpg);">
+        <div class="bradcumbContent">
+            <center><h2>Weather<br/>This site will provides you current updates happening in the world.<br/>By clicking on the countries and categories at above specified menu... </h2></center>
+        </div>
+    </section>
+
+
+
+
+
+			
+
+			<div class="hero" data-bg-image="images/banner.png">
+				<div class="container">
+					<form action="#" class="find-location">
+						<input type="text" placeholder="Find your location..." id="input">
+						<input type="submit" value="Find" onclick="getWeather()">
+					</form>
+
+				</div>
+			</div>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+var zoom;
+var lon;
+var lat;
+function getWeather() {
+var api = "https://api.openweathermap.org/data/2.5/weather?q=";
+var places = document.getElementById("input").value;
+
+
+
+function autocomplete(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  var currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function(e) {
+      var a, b, i, val = this.value;
+      /*close any already open lists of autocompleted values*/
+      closeAllLists();
+      if (!val) { return false;}
+      currentFocus = -1;
+      /*create a DIV element that will contain the items (values):*/
+      a = document.createElement("DIV");
+      a.setAttribute("id", this.id + "autocomplete-list");
+      a.setAttribute("class", "autocomplete-items");
+      /*append the DIV element as a child of the autocomplete container:*/
+      this.parentNode.appendChild(a);
+      /*for each item in the array...*/
+      for (i = 0; i < arr.length; i++) {
+        /*check if the item starts with the same letters as the text field value:*/
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+          /*create a DIV element for each matching element:*/
+          b = document.createElement("DIV");
+          /*make the matching letters bold:*/
+          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+          /*execute a function when someone clicks on the item value (DIV element):*/
+          b.addEventListener("click", function(e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(b);
+        }
+      }
+  });
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function(e) {
+      var x = document.getElementById(this.id + "autocomplete-list");
+      if (x) x = x.getElementsByTagName("div");
+      if (e.keyCode == 40) {
+        /*If the arrow DOWN key is pressed,
+        increase the currentFocus variable:*/
+        currentFocus++;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 38) { //up
+        /*If the arrow UP key is pressed,
+        decrease the currentFocus variable:*/
+        currentFocus--;
+        /*and and make the current item more visible:*/
+        addActive(x);
+      } else if (e.keyCode == 13) {
+        /*If the ENTER key is pressed, prevent the form from being submitted,*/
+        e.preventDefault();
+        if (currentFocus > -1) {
+          if (x) x[currentFocus].click();
+        }
+      }
+  });
+  function addActive(x) {
+    if (!x) return false;
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+  function removeActive(x) {
+
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  }
+  function closeAllLists(elmnt) {
+ 
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  }
+
+  document.addEventListener("click", function (e) {
+      closeAllLists(e.target);
+  });
+}
+
+var places = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua & Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia & Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Canada","Cape Verde","Cayman Islands","Central Arfrican Republic","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cuba","Curacao","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Eritrea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kiribati","Kosovo","Kuwait","Kyrgyzstan","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Marshall Islands","Mauritania","Mauritius","Mexico","Micronesia","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Myanmar","Namibia","Nauro","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","North Korea","Norway","Oman","Pakistan","Palau","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre & Miquelon","Samoa","San Marino","Sao Tome and Principe","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","Solomon Islands","Somalia","South Africa","South Korea","South Sudan","Spain","Sri Lanka","St Kitts & Nevis","St Lucia","St Vincent","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad & Tobago","Tunisia","Turkey","Turkmenistan","Turks & Caicos","Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom","United States of America","Uruguay","Uzbekistan","Vanuatu","Vatican City","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe","Mumbai","Delhi","Bangalore","Hyderabad","Ahmedabad","Chennai","Kolkata","Surat","Pune","Jaipur","Lucknow","Kanpur","Nagpur","Indore","Thane","Bhopal","Visakhapatnam","Pimpri-Chinchwad","Patna","Vadodara","Ghaziabad","Ludhiana","Agra","Nashik","Faridabad","Meerut","Rajkot","Kalyan-Dombivli","Vasai-Virar","Varanasi","Srinagar","Aurangabad","Dhanbad","Amritsar","Navi Mumbai","Allahabad","Howrah","Ranchi","Gwalior","Jabalpur","Coimbatore","Vijayawada","Jodhpur","Madurai","Raipur","Kota","Chandigarh","Guwahati","Solapur","Hubli–Dharwad","Tiruchirappalli","Bareilly","Mysore","Tiruppur","Gurgaon","Aligarh","Jalandhar","Bhubaneswar","Salem","Mira-Bhayandar","Warangal","Jalgaon","Guntur","Bhiwandi","Saharanpur","Gorakhpur","Bikaner","Amravati","Noida","Jamshedpur","Bhilai","Cuttack","Firozabad","Kochi","Nellore","Bhavnagar","Dehradun","Durgapur","Asansol","Rourkela","Nanded","Kolhapur","Ajmer","Akola","Gulbarga","Jamnagar","Ujjain","Loni","Siliguri","Jhansi","Ulhasnagar","Jammu","Sangli-Miraj & Kupwad","Mangalore","Erode","Belgaum","Ambattur","Tirunelveli","Malegaon","Gaya","Thiruvananthapuram","Udaipur","Maheshtala","Davanagere","Kozhikode","Kurnool","Rajpur Sonarpur","Rajahmundry","Bokaro","South Dumdum","Bellary","Patiala","Gopalpur","Agartala","Bhagalpur","Muzaffarnagar","Bhatpara","Panihati","Latur","Dhule","Tirupati","Rohtak","Korba","Bhilwara","Berhampur","Muzaffarpur","Ahmednagar","Mathura","Kollam","Avadi","Kadapa","Kamarhati","Sambalpur","Bilaspur","Shahjahanpur","Satara","Bijapur","Kakinada","Rampur","Shimoga","Chandrapur","Junagadh","Thrissur","Alwar","Bardhaman","Kulti","Nizamabad","Parbhani","Tumkur","Khammam","Ozhukarai","Bihar Sharif","Panipat","Darbhanga","Bally","Aizawl","Dewas","Ichalkaranji","Karnal","Bathinda","Jalna","Eluru","Barasat,Kirari Suleman Nagar","Purnia","Satna","Mau","Sonipat","Farrukhabad","Sagar","Durg","Imphal","Ratlam","Hapur","Arrah","Anantapur","Karimnagar","Etawah","Ambarnath","North Dumdum","Bharatpur","Begusarai","New Delhi","Gandhidham","Baranagar","Tiruvottiyur","Pondicherry","Sikar","Thoothukudi","Rewa","Mirzapur","Raichur","Pali","Ramagundam","Haridwar","Vijayanagaram","Katihar","Nagercoil","Sri Ganganagar","Karawal Nagar","Mango","Thanjavur","Bulandshahr","Uluberia","Katni","Sambhal","Singrauli","Nadiad","Secunderabad","Naihati","Yamunanagar","Bidhannagar","Pallavaram","Bidar","Munger","Panchkula","Burhanpur","Raurkela Industrial Township","Kharagpur","Dindigul","Gandhinagar","Hospet","Nangloi Jat","Malda","Ongole","Deoghar","Chapra","Haldia","Khandwa","Nandyal","Morena","Amroha","Anand","Bhind","Bhalswa Jahangir Pur","Madhyamgram","Bhiwani","Berhampore","Ambala","Morbi","Fatehpur","Raebareli","Mahaboobnagar","Chittoor,Bhusawal","Orai","Bahraich","Vellore","Mehsana","Raiganj","Sirsa","Danapur","Serampore","Sultan Pur Majra","Guna","Jaunpur","Panvel","Shivpuri","Surendranagar Dudhrej","Unnao","Chinsurah","Alappuzha","Kottayam","Machilipatnam","Shimla","Adoni","Udupi","Tenali","Proddatur","Saharsa","Hindupur","Sasaram","Hajipur","Bhimavaram","Kumbakonam","Dehri","Madanapalle","Siwan","Bettiah","Guntakal","Srikakulam","Motihari","Dharmavaram","Gudivada","Phagwara","Narasaraopet","Suryapet","Miryalaguda","Tadipatri","Karaikudi","Kishanganj","Jamalpur","Ballia","Kavali","Tadepalligudem","Amaravati","Buxar","Jehanabad","Aurangabad","Gangtok"];
+
+autocomplete(document.getElementById("input"), countries);
+
+var key = "&APPID=4980bb1e7366f5a8d033e4122ebc8756&units=imperial";
+$.getJSON(api + places + key , showData);
+function showData(json) {
+    function validateForm() {
+  var i = document.forms["myForm"]["fname"].value;
+  if (x == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+}
+
+var h=document.getElementById("input").value;
+alert(h);
+//document.getElementById("weather-data").innerHTML = alert("hi!");
+/*"<div>"+json.weather[0].main +"</div>"+
+                                                    "<div class="forecast-table">"+
+                                                        "<div class="container">"+
+                                                            "<div class="forecast-container">"+
+                                                                "<div class="today forecast">"+
+                                                                   
+                                                                                    "<div class="forecast-content">"+
+                                                                                        "<div class="location">Location</div>"+
+                                                                                            "<div class="degree">"+
+                                                                                                "<div class="num">"+json.name+"<sup>o</sup>C</div>"+
+                                                                                                    "<div class="forecast-icon">"+
+                                                                                                        "<img src="images/icons/icon-1.svg" alt="" width=90>"+
+                                                                                                    "</div>"+  
+                                                                                                "</div>"+
+                                //<span><img src="images/icon-umberella.png" alt="">20%</span>
+                                //<span><img src="images/icon-wind.png" alt="">18km/h</span>
+                                //<span><img src="images/icon-compass.png" alt="">East</span>
+                            "</div>"+
+                        "</div>"+
+                        "<div class="forecast">"+
+                            "<div class="forecast-header">"+
+                                "<div class="day">"+Temperature+"</div>"+
+                            "</div>"+
+                            "<div class="forecast-content">"+
+                                "<div class="forecast-icon">"+
+                                    "<img src="images/icons/icon-3.svg" alt="" width=48>"+
+                                "</div>"+
+                                "<div class="degree">"+json.main.temp+"<sup>o</sup>C</div>"+
+                                "<small>"+18+"<sup>o</sup></small>"+
+                            "</div>"+
+                        "</div>"+
+                        "<div class="forecast">"+
+                            "<div class="forecast-header">"+
+                                "<div class="day">"+Minimum<br/>Temperature+"</div>"+
+                            "</div>"+
+                            "<div class="forecast-content">"+
+                                "<div class="forecast-icon">"+
+                                    "<img src="images/icons/icon-5.svg" alt="" width=48>"+
+                                "</div>"+
+                                "<div class="degree">"+json.main.temp_min+"<sup>o</sup>C</div>"+
+                                "<small>"+18+"<sup>o</sup></small>"+
+                            "</div>"+
+                        "</div>"+
+                        "<div class="forecast">"+
+                            "<div class="forecast-header">"+
+                                "<div class="day">"+Maximum<br/>Temperature+"</div>"+
+                            "</div>"+
+                            "<div class="forecast-content">"+
+                                "<div class="forecast-icon">"+
+                                    "<img src="images/icons/icon-7.svg" alt="" width=48>"+
+                                "</div>"+
+                                "<div class="degree">"+json.main.temp_max+"<sup>o</sup>C</div>"+
+                                "<small>"+18+"<sup>o</sup></small>"+
+                            "</div>"+
+                        "</div>"+
+                        "<div class="forecast">"+
+                            "<div class="forecast-header">"+
+                                "<div class="day">"+Humidity+"</div>"+
+                            "</div>"+
+                            "<div class="forecast-content">"+
+                                "<div class="forecast-icon">"+
+                                    "<img src="images/icons/icon-1.svg" alt="" width=48>"+
+                                "</div>"+
+                                "<div class="degree">"+json.main.humidity+"<sup>o</sup>C</div>"+
+                                "<small>"+18+"<sup>o</sup>C</small>"+
+                            "</div>"+
+                        "</div>"+
+                        "<div class="forecast">"+
+                            "<div class="forecast-header">"+
+                                "<div class="day">"+Wind Speed+"</div>"+
+                            "</div>"+
+                            "<div class="forecast-content">"+
+                                "<div class="forecast-icon">"+
+                                    "<img src="images/icons/icon-1.svg" alt="" width=48>"+
+                                "</div>"+
+                                "<div class="degree">"+Wind Speed+"<sup>o</sup>C</div>"+
+                                "<small>"+18+"<sup>o</sup></small>"+
+                            "</div>"+
+                        "</div>"+
+                        "<div class="forecast">"+
+                            "<div class="forecast-header">"+
+                                "<div class="day">"+Wind Speed+"</div>"+
+                            "</div>"+
+                            "<div class="forecast-content">"+
+                                "<div class="forecast-icon">"+
+                                    "<img src="images/icons/icon-1.svg" alt="" width=48>"+
+                                "</div>"+
+                                "<div class="degree">"+json.wind.speed+"<sup>o</sup>C</div>"+
+                                "<small>"+18+"<sup>o</sup></small>"+
+                            "</div>"+
+                        "</div>"+
+                    "</div>"+
+                "</div>"+
+            "</div>"+
+
+
+lon = json.coord.lon;
+lat = json.coord.lat;
+zoom = 11;
+initMap();
+}
+}
+function initMap(){
+var map;
+var options = {
+zoom: zoom,
+center: {lat: lat, lng: lon}
+};
+map = new google.maps.Map(document.getElementById('map-data'), options);
+}
+*/
+
+
+        </script>
+
+<!--<div class="forecast-table">
+				<div class="container">
+					<div class="forecast-container">
+						<div class="today forecast">
+								<div class="forecast-content">
+								<div class="location">New York</div>
+								<div class="degree">
+									<div class="num">23<sup>o</sup>C</div>
+									<div class="forecast-icon">
+										<img src="images/icons/icon-1.svg" alt="" width=90>
+									</div>	
+								</div>
+								<span><img src="images/icon-umberella.png" alt="">20%</span>
+								<span><img src="images/icon-wind.png" alt="">18km/h</span>
+								<span><img src="images/icon-compass.png" alt="">East</span>
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day">Avg Temperature</div>
+							</div> // .forecast-header 
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<img src="images/icons/icon-3.svg" alt="" width=48>
+								</div>
+								<div class="degree">name</div>
+								<small>18<sup>o</sup></small>
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day">Min Temperature</div>
+							</div> //.forecast-header
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<img src="images/icons/icon-5.svg" alt="" width=48>
+								</div>
+								<div class="degree">23<sup>o</sup>C</div>
+								<small>18<sup>o</sup></small>
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day">Max Temperture</div>
+							</div> // .forecast-header 
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<img src="images/icons/icon-7.svg" alt="" width=48>
+								</div>
+								<div class="degree">23<sup>o</sup>C</div>
+								<small>18<sup>o</sup></small>
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day">Friday</div>
+							</div> // .forecast-header
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<img src="images/icons/icon-12.svg" alt="" width=48>
+								</div>
+								<div class="degree">23<sup>o</sup>C</div>
+								<small>18<sup>o</sup></small>
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day">Saturday</div>
+							</div> // .forecast-header
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<img src="images/icons/icon-13.svg" alt="" width=48>
+								</div>
+								<div class="degree">23<sup>o</sup>C</div>
+								<small>18<sup>o</sup></small>
+							</div>
+						</div>
+						<div class="forecast">
+							<div class="forecast-header">
+								<div class="day">Sunday</div>
+							</div> // .forecast-header
+							<div class="forecast-content">
+								<div class="forecast-icon">
+									<img src="images/icons/icon-14.svg" alt="" width=48>
+								</div>
+								<div class="degree">23<sup>o</sup>C</div>
+								<small>18<sup>o</sup></small>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>-->
+
+<footer class="footer-area">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-12 col-lg-5">
+                    <div class="footer-widget-area mt-50">
+                        <a href="#" class="d-block mb-5"><img src="img/core-img/logo.png" alt=""></a>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec malesuada lorem maximus mauris sceleri sque, at rutrum nulla dictum. Ut ac ligula sapien. Suspendisse cursus faucibus finibus. </p>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="footer-widget-area mt-50">
+                        <h6 class="widget-title mb-5">Find us on the map</h6>
+                        <img src="img/bg-img/footer-map.png" alt="">
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="footer-widget-area mt-50">
+                        <h6 class="widget-title mb-5">Subscribe to our newsletter</h6>
+                        <form action="#" method="post" class="subscribe-form">
+
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+
+
+                <div class="col-12">
+                    <div class="copywrite-text mt-30">
+                        <p><a href="#">
+Copyright &copy;</a>
+</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+  
+
+    <script src="js/jquery/jquery-2.2.4.mins.js"></script>
+ 
+    <script src="js/bootstrap/poppers.js"></script>
+
+    <script src="js/plugins/pluginss.js"></script>
+
+    <script src="js/active.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="jquery-1.11.1.min.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<!--<footer class="site-footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8">
+							<form action="#" class="subscribe-form">
+								<input type="text" placeholder="Enter your email to subscribe...">
+								<input type="submit" value="Subscribe">
+							</form>
+						</div>
+						<div class="col-md-3 col-md-offset-1">
+							<div class="social-links">
+								<a href="#"><i class="fa fa-facebook"></i></a>
+								<a href="#"><i class="fa fa-twitter"></i></a>
+								<a href="#"><i class="fa fa-google-plus"></i></a>
+								<a href="#"><i class="fa fa-pinterest"></i></a>
+							</div>
+						</div>
+					</div>
+
+					<p class="colophon">Copyright 2014 Company name. Designed by Themezy. All rights reserved</p>
+				</div>
+			</footer> // .site-footer 
+		</div> 
+
+
+
+		
+		<script src="js/jquery-1.11.1.min.js"></script>
+		<script src="js/plugins.js"></script>
+		<script src="js/app.js"></script>
+		
+	</body>
+
+</html>-->

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Second Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  </head>
+  <style>
+    .top {
+    z-index: 2;
+    position: fixed;
+    height:50px;
+    width:100%;
+    background-color: white;
+    box-shadow: 0px 5px 10px #888888;
+    }
+    .left {
+    position: fixed;
+    float:left;
+    margin-top: 100px;
+    margin-left: 5%;
+    width: 80%;
+    height: 400px;
+    border-radius: 20px;
+    }
+    .result {
+    padding-left: 5%;
+    float:left;
+    margin-top: 150px;
+    margin-left: 20%;
+    width: 75%;
+    height: 1000px;
+    }
+    .body {
+    background-color: lightgray
+    }
+    .heading {
+    z-index: 1;
+    padding-left: 20px;
+    font-family: sans-serif;
+    font-size: 50px;
+    position: fixed;
+    height:100px;
+    width:80%;
+    float: left;
+    margin-top: 50px;
+    margin-left: 20%;
+    background: linear-gradient(0deg, rgba(211, 211, 211, 0) 00%, rgba(211, 211, 211, 100) 50%)
+    }
+    .panel {
+    font-family: sans-serif;
+    font-size: 20px;
+    float: left;
+    margin-left: 2%;
+    margin-top: 25px;
+    width:40%;
+    height:auto;
+    background-color: white;
+    box-shadow: 0px 0px 5px 2px #888888;
+    }
+    .matchName {
+    font-family: sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    }
+    .date {
+    font-family: sans-serif;
+    font-size: 14px;
+    }
+    .line {
+    border-top:solid;
+    width: 100%;
+    height:1px;
+    }
+    .line-faded {
+    border-color: lightgray;
+    }
+    .card-css {
+    padding: 5px;
+    }
+    .detailCard {
+    margin-bottom: 10px
+    }
+  </style>
+  <script type="text/javascript">
+    let apkey = "3Hs9abSQDRYQqLEJewsiHRfSijh2" //Harvinder di key
+    let apikey="?apikey="+apkey;
+
+
+    $(document).ready(function() {
+                $.ajax({
+                    method: "GET",
+                    crossDomain: true,
+                    url: "http://cricapi.com/api/matches"+apikey,
+                    dataType: "json",
+                    async: true,
+                    success: function(data) {
+                        var x='<div class="card-columns">';
+                        for(i in data.matches){
+                          if(data.matches[i]['matchStarted']==true)
+                          x+='<div class="card bg-light text-dark card-css">'
+                          else
+                          x+='<div class="card bg-dark text-light card-css">'
+                          x+='<div class="matchName">'
+                          x+=data.matches[i]['team-1'];
+                          x+=" vs "
+                          x+=data.matches[i]['team-2'];
+                          x+='</div>'
+                          x+='<div class="line"></div>'
+                          if(data.matches[i]['winner_team']) {
+                            x+='<div class="date">'
+                            x+=data.matches[i]['winner_team']+' won';
+                            x+='</div>'
+                          }
+                          if(data.matches[i]['toss_winner_team']) {
+                            x+='<div class="date text-muted">'
+                            x+='Toss Winner: '+data.matches[i]['toss_winner_team'];
+                            x+='</div>'
+                          }
+
+                          if(data.matches[i]['type']) {
+                            x+='<div class="date text-muted">'
+                            x+='type : '+data.matches[i]['type'];
+                            x+='</div>'
+                          }
+                          if(data.matches[i]['dateTimeGMT']) {
+                            var t = data.matches[i]['dateTimeGMT']
+                            x+='<div class="date text-muted">'
+                            x+=new Date(Date.UTC(Number(t.substr(0,4)), Number(t.substr(5,2))-1, Number(t.substr(8,2)),Number(t.substr(11,2)),Number(t.substr(14,2)),Number(t.substr(17,2))))
+
+                            x+='</div>'
+                          }
+                          x+="</div>"
+                        }
+                        x+='</div>';
+                        document.getElementById("res").innerHTML = x;
+                        document.getElementById("heading").innerHTML = "All Matches";
+                    },
+                    error: function() {
+                        infoContent = "<div>Sorry, data is not coming through. Refresh and try again.</div>";
+                }
+                });
+
+    });
+
+
+    $(document).ready(function() {
+      $("#AllMatches").click(function(){
+                $.ajax({
+                    method: "GET",
+                    crossDomain: true,
+                    url: "http://cricapi.com/api/matches"+apikey,
+                    dataType: "json",
+                    async: true,
+                    success: function(data) {
+                        var x='<div class="card-columns">';
+                        for(i in data.matches){
+    											if(data.matches[i]['matchStarted']==true)
+                          x+='<div class="card bg-light text-dark card-css">'
+    											else
+    											x+='<div class="card bg-dark text-light card-css">'
+    											x+='<div class="matchName">'
+                          x+=data.matches[i]['team-1'];
+                          x+=" vs "
+                          x+=data.matches[i]['team-2'];
+    											x+='</div>'
+    											x+='<div class="line"></div>'
+    											if(data.matches[i]['winner_team']) {
+    												x+='<div class="date">'
+    												x+=data.matches[i]['winner_team']+' won';
+    												x+='</div>'
+    											}
+    											if(data.matches[i]['toss_winner_team']) {
+    												x+='<div class="date text-muted">'
+    												x+='Toss Winner: '+data.matches[i]['toss_winner_team'];
+    												x+='</div>'
+    											}
+
+    											if(data.matches[i]['type']) {
+    												x+='<div class="date text-muted">'
+    												x+='type : '+data.matches[i]['type'];
+    												x+='</div>'
+    											}
+    											if(data.matches[i]['dateTimeGMT']) {
+    												var t = data.matches[i]['dateTimeGMT']
+    												x+='<div class="date text-muted">'
+    												x+=new Date(Date.UTC(Number(t.substr(0,4)), Number(t.substr(5,2))-1, Number(t.substr(8,2)),Number(t.substr(11,2)),Number(t.substr(14,2)),Number(t.substr(17,2))))
+
+    												x+='</div>'
+    											}
+                          x+="</div>"
+                        }
+    										x+='</div>';
+                        document.getElementById("res").innerHTML = x;
+                        document.getElementById("heading").innerHTML = "All Matches";
+                    },
+                    error: function() {
+                        infoContent = "<div>Sorry, data is not coming through. Refresh and try again.</div>";
+                }
+                });
+            });
+        });
+
+    		$(document).ready(function() {
+    		  $("#checkScores").click(function(){
+    		            $.ajax({
+    		                method: "GET",
+    		                crossDomain: true,
+    		                url: "http://cricapi.com/api/cricket"+apikey,
+    		                dataType: "json",
+    		                async: true,
+    		                success: function(data) {
+    		                    var x=''
+    		                    for(i in data.data){
+    		                      x+='<div class="card bg-light text-dark card-css">'
+    													x+='<div class="matchName">'
+    		                      x+=data.data[i]['description'];
+    		                      x+='</div>'
+    													x+='</div>'
+    													}
+    												//x+='</div>';
+    		                    document.getElementById("res").innerHTML = x;
+    		                    document.getElementById("heading").innerHTML = "Check Scores";
+    		                },
+    		                error: function() {
+    		                    infoContent = "<div>Sorry, data is not coming through. Refresh and try again.</div>";
+    		            }
+    		            });
+    		        });
+    		    });
+    		$(document).ready(function() {
+    		  $("#UpcomingMatches").click(function(){
+    		            $.ajax({
+    		                method: "GET",
+    		                crossDomain: true,
+    		                url: "http://cricapi.com/api/matchCalendar"+apikey,
+    		                dataType: "json",
+    		                async: true,
+    		                success: function(data) {
+    		                    var x='<div class="card-columns">';
+
+    		                    for(i in data.data) {
+    		                      x+='<div class="card card-body">'
+    		                      x+='<p class="matchName">'+data.data[i].name+'</p>';
+    		                      x+='<p class="date">'+data.data[i]['date']+'</p>';
+    		                      x+="</div>"
+    		                    }
+    												x+='</div>'
+    		                    document.getElementById("res").innerHTML = x;
+    		                    document.getElementById("heading").innerHTML = "Upcoming Matches";
+    		                },
+    		                error: function() {
+    		                    infoContent = "<div>Sorry, data is not coming through. Refresh and try again.</div>";
+    		            }
+    		            });
+    		        });
+    		    });
+
+    				$(document).ready(function() {
+    				  $("#DetailedView").click(function(){
+    				            $.ajax({
+    				                method: "GET",
+    				                crossDomain: true,
+    				                url: "http://cricapi.com/api/matches"+apikey,
+    				                dataType: "json",
+    				                async: true,
+    				                success: function(data) {
+    													document.getElementById("res").innerHTML = '<div class="card-columns"></div>';
+
+    				                    for(i in data.matches){
+    															if(data.matches[i]['matchStarted']==true) {
+    																var x=''
+    																x+='<div id="'+data.matches[i].unique_id+'" class="card bg-light text-dark detailCard card-css">'
+    																x+='<div class="matchName">'
+    					                      x+=data.matches[i]['team-1'];
+    					                      x+=" vs "
+    					                      x+=data.matches[i]['team-2'];
+    																x+='</div>'
+    																x+='<div class="line"></div>'
+    																if(data.matches[i]['winner_team']) {
+    																	x+='<div class="date">'
+    																	x+=data.matches[i]['winner_team']+' won';
+    																	x+='</div>'
+    																}
+    																if(data.matches[i]['toss_winner_team']) {
+    																	x+='<div class="date text-muted">'
+    																	x+='Toss Winner: '+data.matches[i]['toss_winner_team'];
+    																	x+='</div>'
+    																}
+    																if(data.matches[i]['type']) {
+    																	x+='<div class="date text-muted">'
+    																	x+='type : '+data.matches[i]['type'];
+    																	x+='</div>'
+    																}
+    																if(data.matches[i]['dateTimeGMT']) {
+    																	var t = data.matches[i]['dateTimeGMT']
+    																	x+='<div class="date text-muted">'
+    																	x+=new Date(Date.UTC(Number(t.substr(0,4)), Number(t.substr(5,2))-1, Number(t.substr(8,2)),Number(t.substr(11,2)),Number(t.substr(14,2)),Number(t.substr(17,2))))
+    																	x+='</div>'
+    																}
+    																getdata(data.matches[i]['unique_id'])
+    																x+='</div>'
+    																$( "#res" ).append( x );
+    															}
+    				                    }
+    				                    document.getElementById("heading").innerHTML = "Detailed View";
+    				                },
+    				                error: function() {
+    				                    infoContent = "<div>Sorry, data is not coming through. Refresh and try again.</div>";
+    				            }
+    				            });
+    				        });
+    				    });
+
+    						function getdata(uniqueid){
+    					            $.ajax({
+    					                method: "GET",
+    					                crossDomain: true,
+    					                url: "http://cricapi.com/api/cricketScore?unique_id="+uniqueid+"&apikey="+apkey,
+    					                dataType: "json",
+    					                async: true,
+    					                success: function(data) {
+    														if(data.description || data.score || data.stat) {
+    															var x=''
+    															x+='<div class="line line-faded"></div>'
+    																if(data.description)
+    						                      x+='<div class="date">'+data.description+'</div>';
+    																else if(data.score)
+    																	x+='<div class="date">'+data.score+'</div>';
+    						                      x+='<div class="date">'+data.stat+'</div>';
+    																$( "#"+uniqueid ).append( x );
+    														}
+    					                },
+    					                error: function() {
+    					                    infoContent = "<div>Sorry, data is not coming through. Refresh and try again.</div>";
+    					            }
+    					            });
+    					        }
+  </script>
+  <body class="body">
+    <div>
+      <div class="top">
+        <img class="logo" src='logo.png' height="50px" />
+        <img class="googlePlay" align="right" src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/1280px-Download_on_the_App_Store_Badge.svg.png' height="50px" />
+        <img class="googlePlay" align="right" src='https://lh3.googleusercontent.com/qF9r3ZjtgG-qyHdmjecArtKiulz1gmwL_xl9R3_fzk6igSeoN0wYbJSKEX5d_fxJRwYZJpHbqcLB3i9atl-9dOfUl9an7U43TfZ9PtQ=s0' height="50px" />
+      </div>
+      <div class="topSpacer">
+      </div>
+      <div id="heading" class="heading">
+      </div>
+    </div>
+    <div class="left">
+      <label class="form-check-label">Type</label>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="AllMatches" name="materialExampleRadios" checked>
+        <label class="form-check-label" for="AllMatches"> All Matches</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="checkScores" name="materialExampleRadios">
+        <label class="form-check-label" for="checkScores"> Check Scores</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="UpcomingMatches" name="materialExampleRadios">
+        <label class="form-check-label" for="UpcomingMatches"> Upcoming Matches</label>
+      </div>
+      <div class="form-check">
+        <input type="radio" class="form-check-input" id="DetailedView" name="materialExampleRadios">
+        <label class="form-check-label" for="DetailedView"> DetailedView</label>
+      </div>
+    </div>
+    <div id="res" class="result">
+    </div>
+  </body>
